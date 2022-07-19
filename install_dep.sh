@@ -18,6 +18,7 @@ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | 
 
 echo; echo "Setup vim"
 cp .vimrc $HOME
+echo "Will install plugins after vim startup."
 
 # Start zsh
 echo; echo "Setup zsh"
@@ -25,7 +26,7 @@ cp .zshrc $HOME
 
 echo; echo "Setup restarting with zsh."
 sudo chsh -s `which zsh`
-echo "If it didn't work please setup with chsh -s `which zsh`"
+echo "If it didn't work, please setup with chsh -s `which zsh`."
 
 echo; echo "Setup tmux"
 cp .tmux.conf $HOME
