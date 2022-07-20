@@ -40,6 +40,13 @@ autoload -Uz _zinit
 # SSH-AGENT
 zinit light bobsoppe/zsh-ssh-agent
 
+
+zinit ice atinit"
+        ZSH_TMUX_FIXTERM=true;
+        ZSH_TMUX_AUTOSTART=true;
+        ZSH_TMUX_AUTOCONNECT=true;"
+zinit snippet OMZP::tmux
+
 # AUTOSUGGESTIONS, TRIGGER PRECMD HOOK UPON LOAD
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 zinit ice wait"0a" lucid atload"_zsh_autosuggest_start"; zinit light zsh-users/zsh-autosuggestions
@@ -48,7 +55,7 @@ zinit ice wait"0a" lucid atload"_zsh_autosuggest_start"; zinit light zsh-users/z
 zinit ice wait lucid atload"zicompinit; zicdreplay" blockf 
 zinit light b4b4r07/enhancd
 export ENHANCD_FILTER=fzf:fzy:peco
-export ENHANCD_COMPLETION_BEHAVIOR=list
+export ENHANCD_COMPLETION_BEHAVIOR=dirlist
 
 # HISTORY SUBSTRING SEARCHING
 zinit ice wait"0b" lucid atload'bindkey "$terminfo[kcuu1]" history-substring-search-up; bindkey "$terminfo[kcud1]" history-substring-search-down'
@@ -98,8 +105,15 @@ zinit light junegunn/fzf
 #     zsh-users/zsh-autosuggestions
 
 # TMUX, NEEDED?
-zinit ice from"gh-r" as"program" mv"tmux* -> tmux" pick"tmux" atload"alias tmux=tmux" lucid
-zinit light tmux/tmux
+#
+zinit ice atinit"
+        ZSH_TMUX_FIXTERM=true;
+        ZSH_TMUX_AUTOSTART=false;
+        ZSH_TMUX_AUTOCONNECT=true;
+        ZSH_TMUX_AUTOQUIT=false;"
+zinit snippet OMZP::tmux
+zinit ice from"gh-r" as"program" bpick"*[Aa]pp[Ii]mage*" ver"3.1b" mv"tmux* -> tmux" pick"tmux" ./
+zinit load tmux/tmux
 
 # TMUXINATOR, NEEDED?
 #zinit ice as"completion" lucid; 
